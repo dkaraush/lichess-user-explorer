@@ -159,6 +159,7 @@ export function loadUserGamesCache(
   let isComplete = cacheIsCompleteRaw === 'true';
 
   const save = (games, isComplete = true) => {
+    gamesCache = games;
     localStorage.setItem(
       `${localStoragePrefix}-${username}-games`,
       JSON.stringify(games)
@@ -197,7 +198,7 @@ export function loadUserGamesCache(
           [...games, ...gamesCache]
       );
       save(allGames, isCompleteAfter);
-      gamesCache.push(...allGames);
+      return allGames;
     })
   }
 

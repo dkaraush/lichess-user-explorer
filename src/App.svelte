@@ -3,9 +3,20 @@
 	import MainPage from './MainPage.svelte';
 	import UserPage from './UserPage.svelte';
 
+	let username = location.hash.substring(1);
+	window.addEventListener('hashchange', () =>
+		username = location.hash.substring(1)
+	);
+
 </script>
 
-<Router primary={false}>
-	<Route path="/" component={MainPage} />
-	<Route path="/:username" component={UserPage} />
-</Router>
+{#if username}
+	<UserPage username={username} />
+{:else}
+	<MainPage
+		onUsernameSet={u => {
+			location.hash = u;
+			username = u
+		}}
+	/>
+{/if}

@@ -1,6 +1,5 @@
-<script>
-  export let location, navigate;
-
+<script lang="ts">
+  export let onUsernameSet : (username: string) => void;
   let username;
 </script>
 
@@ -10,7 +9,7 @@
     bind:value={username}
   />
   <button
-    on:click={() => navigate(`/${username}`)}
+    on:click={() => onUsernameSet(username)}
   >
     Go
   </button>

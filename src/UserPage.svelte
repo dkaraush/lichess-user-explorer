@@ -4,7 +4,6 @@
   import Calendar from './Calendar.svelte';
   import FilterButton from './FilterButton.svelte';
 
-  export let location, navigate;
   export let username;
 
   let user: User;
